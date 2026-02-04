@@ -12,10 +12,12 @@ public class Nim {
         for (sticksRemaining = 7; sticksRemaining > 0;) {
             System.out.println("Round " + roundNumber + ": ");
             if (isLast == false) {
-                System.out.print("Your turn! There are/is " + sticksRemaining + " sticks in the pile. Select 1 or 2 sticks: ");
+                System.out.println("Your turn! There are/is " + sticksRemaining + " stick(s) in the pile. Select 1 or 2 sticks: ");
                 stickCount = in.nextInt();
                 if (stickCount < 1 || stickCount > 2) {
                     System.out.println("Please choose a valid number (1 or 2).");
+                } else if (stickCount == 2 && sticksRemaining == 1) {
+                    System.out.println("There is only one stick left!");
                 } else {
                     sticksRemaining = sticksRemaining - stickCount;
                     System.out.println("You chose " + stickCount + " stick(s).");
@@ -23,7 +25,8 @@ public class Nim {
                     roundNumber = roundNumber + 1;
                 }
             } else { //Computer decision; to improve, program computer to make specific decisions based on sticksRemaining (if 2 remain, always choose two, etc.)
-                if (sticksRemaining > 0) {
+                System.out.println("Computer's turn. There are/is " + sticksRemaining + " stick(s) in the pile.");
+                if (sticksRemaining > 1) {
                     double computerRandom = Math.random();
                     if (computerRandom > 0.5) {
                         computerChoice = 2;
@@ -34,6 +37,10 @@ public class Nim {
                     System.out.println("The computer chose " + computerChoice + " stick(s).");
                     isLast = false;
                     roundNumber = roundNumber + 1;
+                } else {
+                    sticksRemaining = sticksRemaining - 1;
+                    System.out.println("The computer chose 1 stick.");
+                    isLast = false;
                 }
             }
 
