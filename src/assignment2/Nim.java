@@ -12,14 +12,13 @@ public class Nim {
         for (sticksRemaining = 7; sticksRemaining > 0;) {
             System.out.println("Round " + roundNumber + ": ");
             if (isLast == false) {
-                System.out.print("Your turn! Select 1 or 2 sticks: ");
+                System.out.print("Your turn! There are/is " + sticksRemaining + " sticks in the pile. Select 1 or 2 sticks: ");
                 stickCount = in.nextInt();
                 if (stickCount < 1 || stickCount > 2) {
                     System.out.println("Please choose a valid number (1 or 2).");
                 } else {
                     sticksRemaining = sticksRemaining - stickCount;
                     System.out.println("You chose " + stickCount + " stick(s).");
-                    System.out.println("There are/is " + sticksRemaining + " stick(s) remaining.");
                     isLast = true;
                     roundNumber = roundNumber + 1;
                 }
@@ -33,7 +32,6 @@ public class Nim {
                     }
                     sticksRemaining = sticksRemaining - computerChoice;
                     System.out.println("The computer chose " + computerChoice + " stick(s).");
-                    System.out.println("There are/is " + sticksRemaining + " stick(s) remaining.");
                     isLast = false;
                     roundNumber = roundNumber + 1;
                 }
